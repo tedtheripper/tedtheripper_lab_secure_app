@@ -19,5 +19,5 @@ jobs:
           docker pull mixeway/scanner:latest
       - name: Run Scan
         run: |
-          docker run -e OSS_USERNAME=${{secrets.OSS_USERNAME}} -e OSS_KEY=${{secrets.OSS_KEY}} -e MIXEWAY_URL=https://hub.mixeway.io -e MIXEWAY_KEY=${{secrets.MIXEWAY_KEY}} -e MIXEWAY_PROJECT_ID=126 -e MODE=STANDALONE -e MIXEWAY_PROJECT_NAME=${{secrets.MIXEWAY_PROJECT_NAME}} -e COMMIT_ID=${{steps.vars.outputs.sha_short}} -e BRANCH=${{steps.vars.outputs.branch}} -v ./:/opt/sources mixeway/scanner:latest
+          docker run -e OSS_USERNAME=${{secrets.OSS_USERNAME}} -e OSS_KEY=${{secrets.OSS_KEY}} -e MIXEWAY_URL=https://hub.mixeway.io -e MIXEWAY_KEY=${{secrets.MIXEWAY_KEY}} -e MIXEWAY_PROJECT_ID=126 -e MODE=STANDALONE -e MIXEWAY_PROJECT_NAME=${{secrets.MIXEWAY_PROJECT_NAME}} -e COMMIT_ID=${{steps.vars.outputs.sha_short}} -e BRANCH=${{steps.vars.outputs.branch}} -v "$(pwd):/opt/sources" mixeway/scanner:latest
 
